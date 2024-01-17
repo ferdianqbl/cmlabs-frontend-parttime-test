@@ -1,7 +1,15 @@
-export async function getAllMealsByIngredient({ mealId }: { mealId: string }) {
+export async function getAllMealsByIngredient(ingredientName: string) {
   const res = await fetch(
-    `${process.env.REACT_APP_API_URL}/lookup.php?i=${mealId}`
+    `${process.env.NEXT_PUBLIC_API_URL}/filter.php?i=${ingredientName}`
   );
   const data = await res.json();
-  return data.data;
+  return data;
+}
+
+export async function getDetailMeal(mealId: string) {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/lookup.php?i=${mealId}`
+  );
+  const data = await res.json();
+  return data;
 }
