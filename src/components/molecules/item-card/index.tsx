@@ -10,7 +10,7 @@ type Props = {
 
 const ItemCard: React.FC<Props> = ({ title, body, imgUrl }) => {
   return (
-    <Card className="w-full h-full overflow-hidden">
+    <Card className="w-full h-full overflow-hidden border-none">
       <CardContent className="p-0">
         <Image
           src={
@@ -26,11 +26,10 @@ const ItemCard: React.FC<Props> = ({ title, body, imgUrl }) => {
         />
         <div className="p-4">
           <h5 className="font-medium overflow-ellipsis whitespace-nowrap overflow-hidden">
-            {/* {data.title} */}
-            Chicken
+            {title}
           </h5>
           <p className="text-gray-500 overflow-ellipsis whitespace-nowrap overflow-hidden">
-            {/* {data.body} */} p chicken
+            {body}
           </p>
         </div>
       </CardContent>
