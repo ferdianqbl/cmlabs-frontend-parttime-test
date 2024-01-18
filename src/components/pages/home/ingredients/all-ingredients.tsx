@@ -25,29 +25,32 @@ const AllIngredients: React.FC<Props> = ({ data }) => {
     end: 10,
     data_length: data.length,
   });
+  const [filtered, setFiltered] = useState<IngredientType[]>(data);
   const [entries, setEntries] = useState<IngredientType[]>(
-    data.slice(pagination.start, pagination.end)
+    filtered.slice(pagination.start, pagination.end)
   );
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
-    const filtered = data.filter((item) =>
-      item.strIngredient.toLowerCase().includes(search.toLowerCase())
+    const filteredData = data.filter((item) =>
+      item.strIngredient.toLowerCase().includes(e.target.value.toLowerCase())
     );
-    setEntries(filtered);
+    setFiltered(filteredData);
+    setEntries(filteredData.slice(0, 10));
     setPagination({
       ...pagination,
       page: 1,
       start: 0,
       end: 10,
-      data_length: filtered.length,
+      per_page: 10,
+      data_length: filteredData.length,
     });
   };
 
   const handlePagination = (page: number) => {
     const start = (page - 1) * pagination.per_page; // 0, 5, 10 ...
     const end = start + pagination.per_page; // 5, 10, 15 ...
-    const entries = data.slice(start, end);
+    const entries = filtered.slice(start, end);
     setPagination({
       ...pagination,
       page,
@@ -64,22 +67,28 @@ const AllIngredients: React.FC<Props> = ({ data }) => {
         type="text"
         id="search"
         autoComplete="off"
+        value={search}
+        onChange={handleSearch}
       />
       <PaginationControls
         handlePagination={handlePagination}
         pagination={pagination}
       />
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-4">
-        {entries.map((item, index) => (
-          <Link
-            key={`${item.strIngredient}__${index}`}
-            href={`/ingredients/${item.strIngredient}`}
-            className="w-full h-full duration-300 ease-in-out transform hover:scale-105"
-          >
-            <ItemCard title={item.strIngredient} body={item.strDescription} />
-          </Link>
-        ))}
-      </div>
+      {entries.length > 0 ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-4">
+          {entries.map((item, index) => (
+            <Link
+              key={`${item.strIngredient}__${index}`}
+              href={`/ingredients/${item.strIngredient}`}
+              className="w-full h-full duration-300 ease-in-out transform hover:scale-105"
+            >
+              <ItemCard title={item.strIngredient} body={item.strDescription} />
+            </Link>
+          ))}
+        </div>
+      ) : (
+        <p className="text-center w-full">No Data Found</p>
+      )}
     </div>
   );
 };
