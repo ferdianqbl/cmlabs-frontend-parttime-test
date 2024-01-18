@@ -1,11 +1,7 @@
 import AllIngredients from "@/components/pages/home/ingredients/all-ingredients";
 import { getAllIngredients } from "@/services/ingredients";
 
-const Page = async ({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string | string[] | undefined };
-}) => {
+const Page = async () => {
   const data = await getAllIngredients();
   return (
     <div className="flex flex-col gap-8">
@@ -19,7 +15,7 @@ const Page = async ({
           recipe.
         </p>
       </div>
-      <AllIngredients data={data} searchParams={searchParams} />
+      <AllIngredients data={data} />
     </div>
   );
 };
