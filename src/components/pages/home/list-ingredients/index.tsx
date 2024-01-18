@@ -9,13 +9,13 @@ const ListIngredients = async () => {
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
       {[0, 1, 2, 3, 4, 5].map((item) => (
         <Link
-          key={`${data.meals[item].strIngredient}__${item}`}
-          href={`/ingredients/${data.meals[item].strIngredient}`}
+          key={`${data[item].strIngredient}__${item}`}
+          href={`/ingredients/${data[item].strIngredient}`}
           className="w-full h-full duration-300 ease-in-out transform hover:scale-105"
         >
           <ItemCard
-            title={data.meals[item].strIngredient}
-            body={data.meals[item].strDescription}
+            title={data[item].strIngredient}
+            body={data[item].strDescription}
           />
         </Link>
       ))}
