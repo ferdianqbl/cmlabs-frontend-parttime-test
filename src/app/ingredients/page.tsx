@@ -1,4 +1,4 @@
-import AllIngredients from "@/components/pages/home/ingredients/all-ingredients";
+import AllIngredients from "@/components/pages/ingredients/all-ingredients";
 import { getAllIngredients } from "@/services/ingredients";
 
 const Page = async () => {
