@@ -10,7 +10,6 @@ type Props = {
 };
 
 const DetailMeals: React.FC<Props> = ({ data }) => {
-  const instructions = data?.strInstructions?.split(/\r\n/);
   return (
     <div className="flex flex-col gap-4 w-full md:w-3/4 justify-center mx-auto">
       <Image

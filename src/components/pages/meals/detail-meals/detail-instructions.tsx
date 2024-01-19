@@ -11,11 +11,9 @@ const DetailInstructions: React.FC<Props> = ({ data }) => {
         Meal <span className="text-blue-600">Instructions</span>
       </h2>
       {instructions?.map((instruction, index) => (
-        <>
-          <p key={index} className="">
-            {instruction}
-          </p>
-        </>
+        <p key={`${instruction}${index}`} className="">
+          {instruction}
+        </p>
       ))}
     </>
   );
