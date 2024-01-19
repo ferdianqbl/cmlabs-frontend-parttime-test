@@ -1,17 +1,17 @@
 "use client";
-import ItemCard from "@/components/molecules/item-card";
 import Link from "next/link";
 import PaginationControls from "./pagination-controls";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
-import { AreaType } from "@/services/areas";
+import { MealType } from "@/services/meals";
 import ItemCardOverlay from "@/components/molecules/item-card-overlay";
 
 type Props = {
-  data: AreaType[];
+  data: MealType[];
+  areaName: string;
 };
 
-const AllAreas: React.FC<Props> = ({ data }) => {
+const AllMealByArea: React.FC<Props> = ({ data, areaName }) => {
   const [search, setSearch] = useState<string>("");
   const [pagination, setPagination] = useState<{
     page: number;
@@ -26,15 +26,15 @@ const AllAreas: React.FC<Props> = ({ data }) => {
     end: 10,
     data_length: data.length,
   });
-  const [filtered, setFiltered] = useState<AreaType[]>(data);
-  const [entries, setEntries] = useState<AreaType[]>(
+  const [filtered, setFiltered] = useState<MealType[]>(data);
+  const [entries, setEntries] = useState<MealType[]>(
     filtered.slice(pagination.start, pagination.end)
   );
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
     const filteredData = data.filter((item) =>
-      item.strArea.toLowerCase().includes(e.target.value.toLowerCase())
+      item.strMeal.toLowerCase().includes(e.target.value.toLowerCase())
     );
     setFiltered(filteredData);
     setEntries(filteredData.slice(0, 10));
@@ -79,13 +79,13 @@ const AllAreas: React.FC<Props> = ({ data }) => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-4">
           {entries.map((item, index) => (
             <Link
-              key={`${item.strArea}__${index}`}
-              href={`/areas/${item.strArea}`}
+              key={`${item.strMeal}__${index}`}
+              href={`/meals/${areaName}/${item.idMeal}`}
               className="w-full h-full duration-300 ease-in-out transform hover:scale-105"
             >
               <ItemCardOverlay
-                title={item.strArea}
-                imgUrl={`https://source.unsplash.com/random/200×300/?${item.strArea}`}
+                title={item.strMeal}
+                imgUrl={item.strMealThumb}
               />
             </Link>
           ))}
@@ -97,4 +97,4 @@ const AllAreas: React.FC<Props> = ({ data }) => {
   );
 };
 
-export default AllAreas;
+export default AllMealByArea;

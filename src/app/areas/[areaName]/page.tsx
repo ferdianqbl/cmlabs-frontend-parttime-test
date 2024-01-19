@@ -1,3 +1,4 @@
+import AllMealByArea from "@/components/pages/area-detail/all-meals-by-area";
 import { getAllMealsByType } from "@/services/meals";
 
 const Page = async ({
@@ -8,7 +9,7 @@ const Page = async ({
   };
 }) => {
   const data = await getAllMealsByType({
-    type: "category",
+    type: "area",
     query: params.areaName.replace(/%20/g, "_"),
   });
   return (
@@ -26,6 +27,7 @@ const Page = async ({
           recipe.
         </p>
       </div>
+      <AllMealByArea data={data} areaName={params.areaName} />
     </div>
   );
 };
