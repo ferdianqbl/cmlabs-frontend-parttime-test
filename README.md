@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is the project Blog for Synapsis Frontend Test work, by Muhammad Ferdian Iqbal
 
-## Getting Started
+> [Demo Project](https://foodpedia-cmlabs.vercel.app/)
 
-First, run the development server:
+# 🪂Getting Started🪂
+
+First, clone this project:
+
+```bash
+git clone https://github.com/ferdianqbl/cmlabs-frontend-parttime-test.git
+```
+
+Then, install the dependencies:
+
+```bash
+cd cmlabs-frontend-parttime-test
+npm install
+```
+
+Then, create a .env.local file at the root of the project and copy the environments from .env.example:
+
+```bash
+cp .env.example .env.local
+```
+
+Then, fill in the variables according to your environment:
+
+```
+NEXT_PUBLIC_API_URL=https://www.themealdb.com/api/json/v1/1
+```
+
+Then, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🚀Features🚀
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+#### Home
 
-## Learn More
+> 5 Random Posts and Users
 
-To learn more about Next.js, take a look at the following resources:
+#### Ingredients
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+> All Ingredients with Search by Ingredient Name and Pagination
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+#### Detail Ingredient
 
-## Deploy on Vercel
+> All Foods by Ingredient with Search by Food Name and Pagination
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+#### Categories
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+> All Categories with Search by Category Name and Pagination
+
+#### Detail Category
+
+> All Foods by Category with Search by Food Name and Pagination
+
+#### Areas
+
+> All Areas with Search by Area Name and Pagination
+
+#### Detail Area
+
+> All Foods by Area with Search by Food Name and Pagination
+
+#### Detail Food / Meal
+
+> - Food Header (Image, category, country, and Recipe Reference)
+> - Food Recipes
+> - Food Instructions
+> - Food Tutorial
