@@ -19,7 +19,7 @@ const DetailMeals: React.FC<Props> = ({ data }) => {
         height={300}
         alt="user img"
         className="w-full max-h-[300px] object-cover object-center rounded-md"
-        priority
+        // priority
         loading="lazy"
       />
 

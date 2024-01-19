@@ -21,7 +21,7 @@ const ItemCard: React.FC<Props> = ({ title, body, imgUrl }) => {
           width={300}
           height={200}
           alt="blog img"
-          priority
+          // priority
           loading="lazy"
           className="w-full h-full max-h-[150px] object-cover object-center"
         />
