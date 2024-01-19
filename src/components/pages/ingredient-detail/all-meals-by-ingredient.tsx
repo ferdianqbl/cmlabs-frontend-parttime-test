@@ -1,10 +1,10 @@
 "use client";
-import ItemCard from "@/components/molecules/item-card";
 import Link from "next/link";
 import PaginationControls from "./pagination-controls";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { MealByIngredientType } from "@/services/meal";
+import ItemCardOverlay from "@/components/molecules/item-card-overlay";
 
 type Props = {
   data: MealByIngredientType[];
@@ -82,7 +82,10 @@ const AllMealByIngredient: React.FC<Props> = ({ data }) => {
               href={`/meals/${item.idMeal}`}
               className="w-full h-full duration-300 ease-in-out transform hover:scale-105"
             >
-              <ItemCard title={item.strMeal} imgUrl={item.strMealThumb} />
+              <ItemCardOverlay
+                title={item.strMeal}
+                imgUrl={item.strMealThumb}
+              />
             </Link>
           ))}
         </div>
