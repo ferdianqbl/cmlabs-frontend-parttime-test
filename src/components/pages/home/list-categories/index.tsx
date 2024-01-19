@@ -1,9 +1,26 @@
+"use client";
 import ItemCard from "@/components/molecules/item-card";
-import { getAllCategories } from "@/services/categories";
+import ListLoading from "@/components/molecules/list-loading";
+import { CategoryType, getAllCategories } from "@/services/categories";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
-const ListCategories = async () => {
-  const data = await getAllCategories();
+const ListCategories = () => {
+  const [data, setData] = useState<CategoryType[] | []>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const getData = async () => {
+    setIsLoading(true);
+    const data = await getAllCategories();
+    setData(data);
+    setIsLoading(false);
+  };
+  useEffect(() => {
+    getData();
+  }, []);
+
+  if (isLoading) {
+    return <ListLoading />;
+  }
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">

@@ -1,10 +1,26 @@
+"use client";
 import ItemCardOverlay from "@/components/molecules/item-card-overlay";
-import { getAllAreas } from "@/services/areas";
+import ListLoading from "@/components/molecules/list-loading";
+import { AreaType, getAllAreas } from "@/services/areas";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
-const ListAreas = async () => {
-  const data = await getAllAreas();
+const ListAreas = () => {
+  const [data, setData] = useState<AreaType[] | []>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const getData = async () => {
+    setIsLoading(true);
+    const data = await getAllAreas();
+    setData(data);
+    setIsLoading(false);
+  };
+  useEffect(() => {
+    getData();
+  }, []);
 
+  if (isLoading) {
+    return <ListLoading />;
+  }
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
       {[0, 1, 2, 3, 4, 5].map((item) => (

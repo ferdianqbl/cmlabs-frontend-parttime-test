@@ -1,9 +1,26 @@
+"use client";
 import ItemCard from "@/components/molecules/item-card";
-import { getAllIngredients } from "@/services/ingredients";
+import ListLoading from "@/components/molecules/list-loading";
+import { IngredientType, getAllIngredients } from "@/services/ingredients";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
-const ListIngredients = async () => {
-  const data = await getAllIngredients();
+const ListIngredients = () => {
+  const [data, setData] = useState<IngredientType[] | []>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const getData = async () => {
+    setIsLoading(true);
+    const data = await getAllIngredients();
+    setData(data);
+    setIsLoading(false);
+  };
+  useEffect(() => {
+    getData();
+  }, []);
+
+  if (isLoading) {
+    return <ListLoading />;
+  }
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
