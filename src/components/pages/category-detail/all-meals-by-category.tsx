@@ -1,16 +1,17 @@
 "use client";
-import ItemCard from "@/components/molecules/item-card";
 import Link from "next/link";
 import PaginationControls from "./pagination-controls";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
-import { CategoryType } from "@/services/categories";
+import { MealType } from "@/services/meals";
+import ItemCardOverlay from "@/components/molecules/item-card-overlay";
 
 type Props = {
-  data: CategoryType[];
+  data: MealType[];
+  categoryName: string;
 };
 
-const AllCategories: React.FC<Props> = ({ data }) => {
+const AllMealByCategory: React.FC<Props> = ({ data, categoryName }) => {
   const [search, setSearch] = useState<string>("");
   const [pagination, setPagination] = useState<{
     page: number;
@@ -25,15 +26,15 @@ const AllCategories: React.FC<Props> = ({ data }) => {
     end: 10,
     data_length: data.length,
   });
-  const [filtered, setFiltered] = useState<CategoryType[]>(data);
-  const [entries, setEntries] = useState<CategoryType[]>(
+  const [filtered, setFiltered] = useState<MealType[]>(data);
+  const [entries, setEntries] = useState<MealType[]>(
     filtered.slice(pagination.start, pagination.end)
   );
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
     const filteredData = data.filter((item) =>
-      item.strCategory.toLowerCase().includes(e.target.value.toLowerCase())
+      item.strMeal.toLowerCase().includes(e.target.value.toLowerCase())
     );
     setFiltered(filteredData);
     setEntries(filteredData.slice(0, 10));
@@ -78,14 +79,13 @@ const AllCategories: React.FC<Props> = ({ data }) => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-4">
           {entries.map((item, index) => (
             <Link
-              key={`${item.strCategory}__${index}`}
-              href={`/categories/${item.strCategory}`}
+              key={`${item.strMeal}__${index}`}
+              href={`/meals/${categoryName}/${item.idMeal}`}
               className="w-full h-full duration-300 ease-in-out transform hover:scale-105"
             >
-              <ItemCard
-                title={item.strCategory}
-                body={item.strCategoryDescription}
-                imgUrl={item.strCategoryThumb || ""}
+              <ItemCardOverlay
+                title={item.strMeal}
+                imgUrl={item.strMealThumb}
               />
             </Link>
           ))}
@@ -97,4 +97,4 @@ const AllCategories: React.FC<Props> = ({ data }) => {
   );
 };
 
-export default AllCategories;
+export default AllMealByCategory;

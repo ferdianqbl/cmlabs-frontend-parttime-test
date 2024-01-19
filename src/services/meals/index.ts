@@ -1,11 +1,11 @@
-export type MealByIngredientType = {
+export type MealType = {
   strMeal: string;
   strMealThumb: string;
   idMeal: string;
 };
 
 export type MealsByIngredientType = {
-  meals: MealByIngredientType[];
+  meals: MealType[];
 };
 
 export type DetailMealType = {
@@ -64,7 +64,7 @@ export type DetailMealType = {
   dateModified: string | null;
 };
 
-export async function getAllMealsByIngredient({
+export async function getAllMealsByType({
   type,
   query,
 }: {

@@ -3,11 +3,11 @@ import Link from "next/link";
 import PaginationControls from "./pagination-controls";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
-import { MealByIngredientType } from "@/services/meals";
+import { MealType } from "@/services/meals";
 import ItemCardOverlay from "@/components/molecules/item-card-overlay";
 
 type Props = {
-  data: MealByIngredientType[];
+  data: MealType[];
   ingredientName: string;
 };
 
@@ -26,8 +26,8 @@ const AllMealByIngredient: React.FC<Props> = ({ data, ingredientName }) => {
     end: 10,
     data_length: data.length,
   });
-  const [filtered, setFiltered] = useState<MealByIngredientType[]>(data);
-  const [entries, setEntries] = useState<MealByIngredientType[]>(
+  const [filtered, setFiltered] = useState<MealType[]>(data);
+  const [entries, setEntries] = useState<MealType[]>(
     filtered.slice(pagination.start, pagination.end)
   );
 
