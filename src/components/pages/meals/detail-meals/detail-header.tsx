@@ -1,5 +1,5 @@
 import { Badge } from "@/components/ui/badge";
-import { DetailMealType } from "@/services/meal";
+import { DetailMealType } from "@/services/meals";
 import Link from "next/link";
 
 type Props = {

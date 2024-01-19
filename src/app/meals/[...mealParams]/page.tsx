@@ -1,6 +1,6 @@
 import Breadcrumb, { BreadcrumbType } from "@/components/molecules/breadcrumb";
 import DetailMeals from "@/components/pages/meals/detail-meals";
-import { getDetailMeal } from "@/services/meal";
+import { getDetailMeal } from "@/services/meals";
 import { redirect } from "next/navigation";
 import React from "react";
 

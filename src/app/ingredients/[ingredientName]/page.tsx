@@ -1,6 +1,5 @@
-import Breadcrumb from "@/components/molecules/breadcrumb";
 import AllMealByIngredient from "@/components/pages/ingredient-detail/all-meals-by-ingredient";
-import { getAllMealsByIngredient } from "@/services/meal";
+import { getAllMealsByIngredient } from "@/services/meals";
 
 const Page = async ({
   params,
@@ -9,19 +8,12 @@ const Page = async ({
     ingredientName: string;
   };
 }) => {
-  const data = await getAllMealsByIngredient(
-    params.ingredientName.replace(/%20/g, "_")
-  );
+  const data = await getAllMealsByIngredient({
+    type: "ingredient",
+    query: params.ingredientName.replace(/%20/g, "_"),
+  });
   return (
     <div className="flex flex-col gap-8">
-      <Breadcrumb
-        data={[
-          {
-            type: "ingredient",
-            name: params.ingredientName.replace(/%20/g, " "),
-          },
-        ]}
-      />
       <div className="flex flex-col gap-1 items-center justify-center">
         <h1 className="text-2xl font-bold">
           Find your favorite meal with{" "}

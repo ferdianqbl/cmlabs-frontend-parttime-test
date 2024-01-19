@@ -1,4 +1,4 @@
-import { DetailMealType } from "@/services/meal";
+import { DetailMealType } from "@/services/meals";
 
 type Props = {
   data: DetailMealType;

@@ -3,7 +3,7 @@ import Link from "next/link";
 import PaginationControls from "./pagination-controls";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
-import { MealByIngredientType } from "@/services/meal";
+import { MealByIngredientType } from "@/services/meals";
 import ItemCardOverlay from "@/components/molecules/item-card-overlay";
 
 type Props = {

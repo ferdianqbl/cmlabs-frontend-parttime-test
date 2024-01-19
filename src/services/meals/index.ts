@@ -64,11 +64,29 @@ export type DetailMealType = {
   dateModified: string | null;
 };
 
-export async function getAllMealsByIngredient(ingredientName: string) {
+export async function getAllMealsByIngredient({
+  type,
+  query,
+}: {
+  type: "area" | "category" | "ingredient";
+  query: string;
+}) {
   try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/filter.php?i=${ingredientName}`
-    );
+    let url = "";
+    switch (type) {
+      case "area":
+        url = `${process.env.NEXT_PUBLIC_API_URL}/filter.php?a=${query}`;
+        break;
+      case "category":
+        url = `${process.env.NEXT_PUBLIC_API_URL}/filter.php?c=${query}`;
+        break;
+      case "ingredient":
+        url = `${process.env.NEXT_PUBLIC_API_URL}/filter.php?i=${query}`;
+        break;
+      default:
+        break;
+    }
+    const res = await fetch(url);
     const data: MealsByIngredientType = await res.json();
     return data.meals || [];
   } catch (error) {

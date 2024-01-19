@@ -1,4 +1,4 @@
-import { DetailMealType } from "@/services/meal";
+import { DetailMealType } from "@/services/meals";
 import Image from "next/image";
 import DetailHeader from "./detail-header";
 import DetailRecipes from "./detail-recipes";

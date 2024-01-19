@@ -21,7 +21,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Navbar />
-        <div className="py-6 container">
+        <div className="py-6 container min-h-screen">
           <ProgressBarProvider>{children}</ProgressBarProvider>
         </div>
         <Footer />
