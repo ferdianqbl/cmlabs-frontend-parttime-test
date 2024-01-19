@@ -12,16 +12,15 @@ const Page = async ({
   };
 }) => {
   const data = await getDetailMeal(params.mealParams[1]);
-  if (!data) redirect("/ingredients");
+  const filterParams = params.mealParams[0].split("-");
+  if (!data) redirect(`/${filterParams[0]}`);
 
   const breadcrumbData: BreadcrumbType[] = [
     {
-      type: "ingredient",
-      name: params.mealParams[0].replace(/%20/g, " "),
-      path: `/ingredients/${params.mealParams[0].replace(/%20/g, " ")}`,
+      name: filterParams[1].replace(/%20/g, " "),
+      path: `/${filterParams[0]}/${filterParams[1].replace(/%20/g, " ")}`,
     },
     {
-      type: "meal",
       name: data?.strMeal,
     },
   ];

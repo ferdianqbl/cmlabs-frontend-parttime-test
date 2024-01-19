@@ -80,7 +80,7 @@ const AllMealByCategory: React.FC<Props> = ({ data, categoryName }) => {
           {entries.map((item, index) => (
             <Link
               key={`${item.strMeal}__${index}`}
-              href={`/meals/${categoryName}/${item.idMeal}`}
+              href={`/meals/categories-${categoryName}/${item.idMeal}`}
               className="w-full h-full duration-300 ease-in-out transform hover:scale-105"
             >
               <ItemCardOverlay

@@ -80,7 +80,7 @@ const AllMealByArea: React.FC<Props> = ({ data, areaName }) => {
           {entries.map((item, index) => (
             <Link
               key={`${item.strMeal}__${index}`}
-              href={`/meals/${areaName}/${item.idMeal}`}
+              href={`/meals/areas-${areaName}/${item.idMeal}`}
               className="w-full h-full duration-300 ease-in-out transform hover:scale-105"
             >
               <ItemCardOverlay
