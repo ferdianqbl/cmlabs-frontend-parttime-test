@@ -1,11 +1,16 @@
 import { DetailMealType } from "@/services/meal";
 import Image from "next/image";
+import DetailHeader from "./detail-header";
+import DetailRecipes from "./detail-recipes";
+import DetailInstructions from "./detail-instructions";
+import DetailTutorial from "./detail-tutorial";
 
 type Props = {
   data: DetailMealType;
 };
 
 const DetailMeals: React.FC<Props> = ({ data }) => {
+  const instructions = data?.strInstructions?.split(/\r\n/);
   return (
     <div className="flex flex-col gap-4 w-full md:w-3/4 justify-center mx-auto">
       <Image
@@ -18,26 +23,19 @@ const DetailMeals: React.FC<Props> = ({ data }) => {
       />
 
       <div className="flex flex-col gap-2 w-full">
-        <h1 className="text-blue-600 font-bold text-2xl text-center">
-          {data.strMeal}
-        </h1>
-        <div className="flex flex-row gap-2">
-          <p className="text-gray-400">Category:</p>
-          <p className="text-gray-600">{data.strCategory}</p>
+        <DetailHeader data={data} />
+      </div>
+      <div className="flex flex-col gap-2">
+        <DetailRecipes data={data} />
+      </div>
+      <div className="flex flex-col gap-2">
+        <DetailInstructions data={data} />
+      </div>
+      {data.strYoutube && (
+        <div className="flex flex-col gap-2">
+          <DetailTutorial data={data} />
         </div>
-      </div>
-      <div className="flex flex-col gap-4">
-        <h2 className="text-xl font-semibold">
-          Meal <span className="text-blue-600">Recipes</span>
-        </h2>
-        <p className="">{data.strInstructions}</p>
-      </div>
-      <div className="flex flex-col gap-4">
-        <h2 className="text-xl font-semibold">
-          Meal <span className="text-blue-600">Instructions</span>
-        </h2>
-        <p className="">{data.strInstructions}</p>
-      </div>
+      )}
     </div>
   );
 };
