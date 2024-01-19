@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/molecules/navbar";
+import ProgressBarProvider from "@/lib/context/progress-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,7 +20,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Navbar />
-        <div className="py-6 container">{children}</div>
+        <div className="py-6 container">
+          <ProgressBarProvider>{children}</ProgressBarProvider>
+        </div>
       </body>
     </html>
   );
