@@ -21,6 +21,16 @@ const DetailMeals: React.FC<Props> = ({ data }) => {
         <h1 className="text-blue-600 font-bold text-2xl text-center">
           {data.strMeal}
         </h1>
+        <div className="flex flex-row gap-2">
+          <p className="text-gray-400">Category:</p>
+          <p className="text-gray-600">{data.strCategory}</p>
+        </div>
+      </div>
+      <div className="flex flex-col gap-4">
+        <h2 className="text-xl font-semibold">
+          Meal <span className="text-blue-600">Recipes</span>
+        </h2>
+        <p className="">{data.strInstructions}</p>
       </div>
       <div className="flex flex-col gap-4">
         <h2 className="text-xl font-semibold">

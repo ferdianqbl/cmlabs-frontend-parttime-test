@@ -1,5 +1,6 @@
 import DetailMeals from "@/components/pages/meals/detail-meals";
 import { getDetailMeal } from "@/services/meal";
+import { redirect } from "next/navigation";
 import React from "react";
 
 const Page = async ({
@@ -10,6 +11,8 @@ const Page = async ({
   };
 }) => {
   const data = await getDetailMeal(params.mealId);
+
+  if (!data) redirect("/ingredients");
 
   return (
     <div className="flex flex-col gap-8">
