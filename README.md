@@ -41,7 +41,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 #### Home
 
-> 5 Random Posts and Users
+> 5 Latest Ingredients, Categories, and Areas
 
 #### Ingredients
 

@@ -1,3 +1,5 @@
+import ListAreas from "@/components/pages/home/list-areas";
+import ListCategories from "@/components/pages/home/list-categories";
 import ListIngredients from "@/components/pages/home/list-ingredients";
 
 export default async function Home() {
@@ -20,6 +22,24 @@ export default async function Home() {
           Find your favorite meal with the ingredients you have.
         </small>
         <ListIngredients />
+      </div>
+      <div className="flex flex-col">
+        <h2 className="text-xl font-semibold">
+          <span className="text-blue-600">Latest</span> Categories
+        </h2>
+        <small className="mb-4 text-gray-400">
+          Find your favorite meal with the category you want.
+        </small>
+        <ListCategories />
+      </div>
+      <div className="flex flex-col">
+        <h2 className="text-xl font-semibold">
+          <span className="text-blue-600">Latest</span> Areas
+        </h2>
+        <small className="mb-4 text-gray-400">
+          Find your favorite meal with the area you want.
+        </small>
+        <ListAreas />
       </div>
     </div>
   );
