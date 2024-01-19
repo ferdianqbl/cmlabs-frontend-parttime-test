@@ -1,3 +1,4 @@
+import Breadcrumb from "@/components/molecules/breadcrumb";
 import AllMealByIngredient from "@/components/pages/ingredient-detail/all-meals-by-ingredient";
 import { getAllMealsByIngredient } from "@/services/meal";
 
@@ -13,6 +14,14 @@ const Page = async ({
   );
   return (
     <div className="flex flex-col gap-8">
+      <Breadcrumb
+        data={[
+          {
+            type: "ingredient",
+            name: params.ingredientName.replace(/%20/g, " "),
+          },
+        ]}
+      />
       <div className="flex flex-col gap-1 items-center justify-center">
         <h1 className="text-2xl font-bold">
           Find your favorite meal with{" "}
@@ -26,7 +35,10 @@ const Page = async ({
           recipe.
         </p>
       </div>
-      <AllMealByIngredient data={data} />
+      <AllMealByIngredient
+        data={data}
+        ingredientName={params.ingredientName.replace(/%20/g, " ")}
+      />
     </div>
   );
 };

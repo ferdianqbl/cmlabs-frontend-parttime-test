@@ -30,6 +30,7 @@ const ItemCardOverlay: React.FC<Props> = ({ title, imgUrl }) => {
             height={200}
             alt="blog img"
             priority
+            loading="lazy"
             className="w-full h-full object-cover object-center filter brightness-50 absolute top-0 left-0 right-0 bottom-0 z-0"
           />
         </div>

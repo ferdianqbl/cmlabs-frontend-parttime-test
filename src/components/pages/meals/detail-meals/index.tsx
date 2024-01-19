@@ -20,6 +20,7 @@ const DetailMeals: React.FC<Props> = ({ data }) => {
         alt="user img"
         className="w-full max-h-[300px] object-cover object-center rounded-md"
         priority
+        loading="lazy"
       />
 
       <div className="flex flex-col gap-2 w-full">

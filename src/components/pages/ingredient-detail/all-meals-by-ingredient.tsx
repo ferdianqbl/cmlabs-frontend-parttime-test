@@ -8,9 +8,10 @@ import ItemCardOverlay from "@/components/molecules/item-card-overlay";
 
 type Props = {
   data: MealByIngredientType[];
+  ingredientName: string;
 };
 
-const AllMealByIngredient: React.FC<Props> = ({ data }) => {
+const AllMealByIngredient: React.FC<Props> = ({ data, ingredientName }) => {
   const [search, setSearch] = useState<string>("");
   const [pagination, setPagination] = useState<{
     page: number;
@@ -79,7 +80,7 @@ const AllMealByIngredient: React.FC<Props> = ({ data }) => {
           {entries.map((item, index) => (
             <Link
               key={`${item.strMeal}__${index}`}
-              href={`/meals/${item.idMeal}`}
+              href={`/meals/${ingredientName}/${item.idMeal}`}
               className="w-full h-full duration-300 ease-in-out transform hover:scale-105"
             >
               <ItemCardOverlay
